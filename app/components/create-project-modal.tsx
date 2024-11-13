@@ -24,10 +24,20 @@ export function CreateProjectModal({
     setIsCreatingProject(true)
 
     const formData = new FormData(e.target as HTMLFormElement)
+
+    // Validate form data
+    if (
+      !formData.get('name') ||
+      !formData.get('description') ||
+      !formData.get('budget')
+    ) {
+      return
+    }
+
     const budget = formData.get('budget') as string
     const newProject: NewProject = {
-      name: formData.get('name') as string,
-      description: formData.get('description') as string,
+      name: (formData.get('name') as string).trim(),
+      description: (formData.get('description') as string).trim(),
       budget: Number(budget.replace(/,/g, '')),
       status: 'active',
       expenseIds: [],
@@ -71,6 +81,7 @@ export function CreateProjectModal({
                     type="text"
                     placeholder="Project Name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm/6"
+                    required
                   />
                 </div>
               </div>
@@ -88,6 +99,7 @@ export function CreateProjectModal({
                     type="text"
                     placeholder="Project Description"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm/6"
+                    required
                   />
                 </div>
               </div>
@@ -106,13 +118,17 @@ export function CreateProjectModal({
                     inputMode="numeric"
                     pattern="[0-9,]*\.?[0-9]*"
                     placeholder="0.00"
+                    required
                     onInput={(e) => {
-                      const value = e.currentTarget.value.replace(/[^\d.]/g, '');
-                      const parts = value.split('.');
+                      const value = e.currentTarget.value.replace(/[^\d.]/g, '')
+                      const parts = value.split('.')
                       if (parts[0]) {
-                        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                        parts[0] = parts[0].replace(
+                          /\B(?=(\d{3})+(?!\d))/g,
+                          ',',
+                        )
                       }
-                      e.currentTarget.value = parts.join('.');
+                      e.currentTarget.value = parts.join('.')
                     }}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm/6"
                   />
