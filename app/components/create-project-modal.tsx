@@ -3,9 +3,7 @@ import {
   Dialog,
   DialogBackdrop,
   DialogPanel,
-  DialogTitle,
 } from '@headlessui/react'
-import { CheckIcon } from 'lucide-react'
 import { NewProject } from '~/entites'
 import { ProjectRepositoryUsingIndexedDB } from '~/repositories'
 import { getDb } from '~/idxdb'
