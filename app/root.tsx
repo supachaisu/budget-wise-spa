@@ -69,7 +69,7 @@ function Header() {
             aria-label="Budget Wise Logo"
           />
           <div>
-            <h1 className="font-extrabold">Budget Wise</h1>
+            <h1 className="font-black">Budget Wise</h1>
             <p className="text-muted-foreground -mt-1 text-sm">
               ERP for project expense monitoring
             </p>
