@@ -46,6 +46,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
         <meta name="apple-mobile-web-app-title" content="Budget Wise" />
         <link rel="manifest" href="/site.webmanifest" />
+        <meta
+          name="theme-color"
+          content="#ffffff"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="#030712"
+          media="(prefers-color-scheme: dark)"
+        />
         <Meta />
         <Links />
       </head>
