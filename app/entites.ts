@@ -8,7 +8,6 @@ export interface Project {
   description: string;
   budget: number;
   status: "active" | "inactive" | "archived";
-  expenseIds: Expense["id"][];
 }
 
 export type NewProject = Omit<Project, "id">;
@@ -21,7 +20,8 @@ export interface Expense {
   id: number;
   name: string;
   amount: number;
-  date: Date;
+  dateCreated: Date;
+  projectId: Project["id"];
 }
 
 export type NewExpense = Omit<Expense, "id">;

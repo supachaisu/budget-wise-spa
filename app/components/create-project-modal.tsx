@@ -34,7 +34,6 @@ export function CreateProjectModal({
       description: (formData.get('description') as string).trim(),
       budget: Number(budget.replace(/,/g, '')),
       status: 'active',
-      expenseIds: [],
     }
     const projectRepository = new ProjectRepositoryUsingIndexedDB(await getDb())
 
